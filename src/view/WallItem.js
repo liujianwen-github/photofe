@@ -16,8 +16,8 @@ export default class WallItem extends Component {
     render() {
         return (
             <div className="wallitem">
-                <img src={this.props.data.imgs[0]} alt="展示图片"/>
-                <span>{this.props.data.detail}</span>
+                <img src={this.props.data.imgs} alt="展示图片"/>
+                <span>{this.props.data.title}</span>
             </div>
         );
     }
