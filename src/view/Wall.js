@@ -26,7 +26,7 @@ export default class Wall extends Component {
     componentWillMount() {
         $http({
             method: 'GET',
-            url: 'http://localhost:8080/photo/items'
+            url: 'http://localhost:8000/photo/items'
         }).then(({ data }) => {
             console.log(data);
             this.setState({
@@ -61,7 +61,7 @@ export default class Wall extends Component {
         form.set('title', this.state.createItem.title)
         $http({
             method: 'POST',
-            url: 'http://localhost:8080/photo/item',
+            url: 'http://localhost:8000/photo/item',
             data: form
         }).then(res => {
             console.log(res)
