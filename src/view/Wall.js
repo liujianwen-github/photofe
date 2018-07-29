@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, {
+    Component
+} from 'react';
 import $http from 'axios'
 // components
 import Item from './WallItem'
 // css
 import '../style/wall.scss'
+import $conf from '../config'
 export default class Wall extends Component {
     constructor(props) {
         super(props)
@@ -18,16 +21,15 @@ export default class Wall extends Component {
         this.detailChange = this.detailChange.bind(this)
         this.fileChange = this.fileChange.bind(this)
         this.submitForm = this.submitForm.bind(this)
-        // setTimeout(() => {
-        //     this.setState({ list: [] })
-        // }, 3000);
     }
 
     componentWillMount() {
         $http({
             method: 'GET',
-            url: 'http://localhost:8000/photo/items'
-        }).then(({ data }) => {
+            url: '/photo/items'
+        }).then(({
+            data
+        }) => {
             console.log(data);
             this.setState({
                 list: data.data || []
@@ -37,19 +39,23 @@ export default class Wall extends Component {
     // 列表数据渲染
     renderList(list) {
         return list.map((element, index) => {
-            return (<Item key={element.id + index} data={element}></Item>)
+            return (<Item key={element.id + index} data={element}/>)
         })
     }
     // 详情修改数据绑定
     detailChange(e) {
         let c = this.state.createItem
         c.title = e.target.value
-        this.setState({ createItem: c })
+        this.setState({
+            createItem: c
+        })
     }
     fileChange(e) {
         let c = this.state.createItem
         c.imgs.push(e.target.value)
-        this.setState({ createItem: c })
+        this.setState({
+            createItem: c
+        })
     }
     // 创建条目表单提交
     submitForm() {
